@@ -70,7 +70,7 @@ while($mostrarUser=mysqli_fetch_assoc($resultSession)) {
                     </li>
                     <li class="full-width divider-menu-h"></li>
 
-
+                    
 
                     <li class="full-width divider-menu-h"></li>
                     <li class="full-width">
