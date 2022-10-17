@@ -30,9 +30,9 @@ $(document).ready(function(){
     $('.btn-exit').on('click', function(){
     	swal({
 		  	title: '¿Quieres salir del sistema?',
-		 	text: "La sesión será cerrada al salir del sistema",
+		 	text: "La sesión será cerrada al salir del sistema, ok?",
 
-		 	text: "¿Estás seguro de cerrar tu sesión?",
+		 	text: "¿Estás seguro de cerrar tu sesión?bhbhkjb",
 		  	type: 'warning',
 		  	showCancelButton: true,
 		  	confirmButtonText: 'Si, salir',
@@ -40,7 +40,7 @@ $(document).ready(function(){
 		},
 		function(isConfirm) {
 		  	if (isConfirm) {
-		    	window.location='index.html'; 
+		    	window.location='/index.html';
 		  	}
 		});
     });
