@@ -2,17 +2,17 @@
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
-include("conexion.php");
+include("../conection/conn.php");
 
-$rut=$_GET['rut'];
-$nombres=$_GET['nombres'];
-$apellidos=$_GET['apellidos'];
-$tel=$_GET['telefono'];
-$correo=$_GET['correo'];
-$direccion=$_GET['direccion'];
+$rut=$_POST['rut'];
+$nombres=$_POST['nombres'];
+$apellidos=$_POST['apellidos'];
+$tel=$_POST['telefono'];
+$correo=$_POST['correo'];
+$direccion=$_POST['direccion'];
 
-$u=$_GET['user'];
-$p=$_GET['pass'];
+$u=$_POST['user'];
+$p=$_POST['pass'];
 
 $insertarAdmin="INSERT INTO admin (correo,direccion,nombres,apellidos,password,rut,tel,username) VALUES ('$correo','$direccion','$nombres', '$apellidos','$p','$rut','$tel','$u')";
 
@@ -28,5 +28,3 @@ mysqli_close($con);
 	echo "<script>alert('No ha sido registrado'); windows.history.go(-1);</script>";
 	header("Location: inicio.php");
 }
-
-?>

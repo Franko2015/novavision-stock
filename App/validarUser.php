@@ -1,11 +1,9 @@
 <?php
 
-include("conexion.php");
+include("conection/conn.php");
 
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
-
-include("conexion.php");
 
 $usuario=$_POST['user'];
 
@@ -39,7 +37,14 @@ while ( $mostrarUser = mysqli_fetch_assoc ( $resultadoID ) ) {
 $id = $mostrarUser['id'];
 
 ?>
-   window.location.replace("inicio.php?idSession=<?php echo $id; } ?>")
+
+   window.location.replace("index.php<?php 
+
+   session_start();
+
+   $_SESSION["Logueado"] = $id;
+   
+   } ?>")
 
    alert('Ingreso exitoso')
 

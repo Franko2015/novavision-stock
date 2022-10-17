@@ -1,10 +1,12 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
 
-include("conexion.php");
+include("../conection/conn.php");
 
-$idSession=$_GET['idSession'];
+session_start();
+
+$idSession = $_SESSION["Logueado"];
+
+$id=$_GET['id'];
 
 $rut=$_POST['txtRut'];
 $nombres=$_POST['txtNombres'];
@@ -14,9 +16,9 @@ $correo=$_POST['txtCorreo'];
 $direccionOficinista=$_POST['txtOficinista'];
 $direccionOficina=$_POST['txtOficina'];
 
-$insertarOficina="INSERT INTO oficina (rut,nombres,apellidos,correo,telefono,direccionOficinista,direccionOficina)VALUES ('$rut', '$nombres','$apellidos', '$correo', '$telefono', '$direccionOficinista', '$direccionOficina');";
+$actualizarOficina="UPDATE oficina SET rut='$rut',nombres='$nombres',apellidos='$apellidos',correo='$correo',telefono='$tel',direccionOficinista='$direccionOficinista',direccionOficina='$direccionOficina' WHERE id=$id";
 
-$resultado=mysqli_query($con,$insertarOficina);
+$resultado=mysqli_query($con,$actualizarOficina);
 
 if($resultado){
 
@@ -25,11 +27,8 @@ if($resultado){
   header("Location: inicio.php?idSession=".$idSession."");
 
 }else{
-	echo "<script>alert('No ha sido registrado');
-	</script>";
 	header("Location: oficinas.php?idSession=".$idSession."");
 }
 
 mysqli_close($con);
-
 ?>

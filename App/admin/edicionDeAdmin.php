@@ -1,7 +1,10 @@
 <?php
-include("conexion.php");
 
-$idSession=$_GET['idSession'];
+include("../conection/conn.php");
+
+session_start();
+
+$idSession = $_SESSION["Logueado"];
 
 $id=$_GET['id'];
 
@@ -20,13 +23,11 @@ $actualizarAdmin="UPDATE admin SET rut='$rut',nombres='$nombres',apellidos='$ape
 $resultado=mysqli_query($con,$actualizarAdmin);
 
 if($resultado){
-	echo "<script>alert('Edicion exitosa');
-	</script>";
-	header("Location: inicio.php?idSession=".$idSession."");
+	echo "<script>alert('Edicion exitosa');</script>";
+	header("Location: index.php?idSession=".$idSession."");
 
 }else{
-	header("Location: admin.php?idSession=".$idSession."");
+	header("Location: index.php?idSession=".$idSession."");
 }
 
 mysqli_close($con);
-?>

@@ -1,8 +1,10 @@
 <?php
 
-include("conexion.php");
+include("../conection/conn.php");
 
-$idSession=$_GET['idSession'];
+session_start();
+
+$idSession = $_SESSION["Logueado"];
 
 $sqlSession = "SELECT * FROM admin WHERE id='$idSession';";
 
@@ -18,153 +20,110 @@ while($mostrarUser=mysqli_fetch_assoc($resultSession)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OFICINAS</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/sweetalert2.css">
-    <link rel="stylesheet" href="css/material.min.css">
-    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/sweetalert2.css">
+    <link rel="stylesheet" href="../../css/material.min.css">
+    <link rel="stylesheet" href="../../css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="../../css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')
     </script>
-    <script src="js/material.min.js"></script>
-    <script src="js/sweetalert2.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../../js/material.min.js"></script>
+    <script src="../../js/sweetalert2.min.js"></script>
+    <script src="../../js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../js/main.js"></script>
 </head>
 
 <body>
-    <!-- navLateral -->
-    <section class="full-width navLateral">
-        <div class="full-width navLateral-bg btn-menu"></div>
-        <div class="full-width navLateral-body">
-            <div class="full-width navLateral-body-logo text-center tittles">
-                <i class="zmdi zmdi-close btn-menu"></i> INVENTARIO
-            </div>
-            <figure class="full-width navLateral-body-tittle-menu">
-                <div>
-                    <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
-                </div>
-                <figcaption>
-                    <span>
-            <?php echo $mostrarUser['nombres'];?> <?php echo $mostrarUser['apellidos'];?><br>
-            <small>ADMINISTRADOR</small>
-            <BR>
-            <small><?php echo $mostrarUser['direccion'];?></small>
-          </span>
-                </figcaption>
-            </figure>
-            <nav class="full-width">
-                <ul class="full-width list-unstyle menu-principal">
-                    <li class="full-width">
-                        <a href="inicio.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                            <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-view-dashboard"></i>
-                            </div>
-                            <div class="navLateral-body-cr">
-                                INICIO
-                            </div>
-                        </a>
-                    </li>
-                    <li class="full-width divider-menu-h"></li>
 
-
-
-                    <li class="full-width divider-menu-h"></li>
-                    <li class="full-width">
-                        <a href="#!" class="full-width btn-subMenu">
-                            <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-face"></i>
-                            </div>
-                            <div class="navLateral-body-cr">
-                                USUARIOS
-                            </div>
-                            <span class="zmdi zmdi-chevron-left"></span>
-                        </a>
-                        <ul class="full-width menu-principal sub-menu-options">
-                            <li class="full-width">
-                                <a href="admin.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                                    <div class="navLateral-body-cl">
-                                        <i class="zmdi zmdi-account"></i>
-                                    </div>
-                                    <div class="navLateral-body-cr">
-                                        ADMINISTRADORES
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="full-width">
-                                <a href="oficinas.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                                    <div class="navLateral-body-cl">
-                                        <i class="zmdi zmdi-accounts"></i>
-                                    </div>
-                                    <div class="navLateral-body-cr">
-                                        OFICINAS
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="full-width divider-menu-h"></li>
-                    <li class="full-width">
-                        <a href="materiales.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                            <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-washing-machine"></i>
-                            </div>
-                            <div class="navLateral-body-cr">
-                                MATERIALES
-                            </div>
-                        </a>
-                    </li>
-                    <li class="full-width divider-menu-h"></li>
-                    <li class="full-width">
-                        <a href="stock.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                            <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-store"></i>
-                            </div>
-                            <div class="navLateral-body-cr">
-                                INVENTARIO
-                            </div>
-                        </a>
-                    </li>
-                    <li class="full-width divider-menu-h"></li>
-                    <li class="full-width">
-                        <a href="#!" class="full-width btn-subMenu">
-                            <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-wrench"></i>
-                            </div>
-                            <div class="navLateral-body-cr">
-                                GESTION
-                            </div>
-                            <span class="zmdi zmdi-chevron-left"></span>
-                        </a>
-                        <ul class="full-width menu-principal sub-menu-options">
-                            <li class="full-width">
-                                <a href="gestionMaterial.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                                    <div class="navLateral-body-cl">
-                                        <i class="zmdi zmdi-widgets"></i>
-                                    </div>
-                                    <div class="navLateral-body-cr">
-                                        ENVIOS
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="full-width">
-                                <a href="editarAdmin.php?idSession=<?php echo $mostrarUser['id']; ?>" class="full-width">
-                                    <div class="navLateral-body-cl">
-                                        <i class="zmdi zmdi-widgets"></i>
-                                    </div>
-                                    <div class="navLateral-body-cr">
-                                        RECEPCIONES
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+<!-- navLateral -->
+<section class="full-width navLateral">
+    <div class="full-width navLateral-bg btn-menu"></div>
+    <div class="full-width navLateral-body">
+        <div class="full-width navLateral-body-logo text-center tittles">
+            <i class="zmdi zmdi-close btn-menu"></i> INVENTARIO
         </div>
-    </section>
+        <figure class="full-width navLateral-body-tittle-menu">
+            <div>
+                <img src="../../assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+            </div>
+            <figcaption>
+                <span>
+                    <?php echo $mostrarUser['nombres'];?> <?php echo $mostrarUser['apellidos'];?><br>
+                    <small>ADMINISTRADOR</small>
+                    <BR>
+                    <small><?php echo $mostrarUser['direccion'];?></small>
+                </span>
+            </figcaption>
+        </figure>
+        <nav class="full-width">
+            <ul class="full-width list-unstyle menu-principal">
+                <li class="full-width">
+                    <a href="../index.php" class="full-width">
+                        <div class="navLateral-body-cl">
+                            <i class="zmdi zmdi-view-dashboard"></i>
+                        </div>
+                        <div class="navLateral-body-cr">
+                            INICIO
+                        </div>
+                    </a>
+                </li>
+                <li class="full-width divider-menu-h"></li>
+
+
+
+                <li class="full-width divider-menu-h"></li>
+                <li class="full-width">
+                    <a href="#!" class="full-width btn-subMenu">
+                        <div class="navLateral-body-cl">
+                            <i class="zmdi zmdi-face"></i>
+                        </div>
+                        <div class="navLateral-body-cr">
+                            USUARIOS
+                        </div>
+                        <span class="zmdi zmdi-chevron-left"></span>
+                    </a>
+                    <ul class="full-width menu-principal sub-menu-options">
+                        <li class="full-width">
+                            <a href="admin/index.php" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-account"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    ADMINISTRADORES
+                                </div>
+                            </a>
+                        </li>
+                        <li class="full-width">
+                            <a href="../offices/index.php" class="full-width">
+                                <div class="navLateral-body-cl">
+                                    <i class="zmdi zmdi-accounts"></i>
+                                </div>
+                                <div class="navLateral-body-cr">
+                                    OFICINAS
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="full-width divider-menu-h"></li>
+                <li class="full-width">
+                    <a href="../materials/index.php" class="full-width">
+                        <div class="navLateral-body-cl">
+                            <i class="zmdi zmdi-store"></i>
+                        </div>
+                        <div class="navLateral-body-cr">
+                            INVENTARIO
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
     <!-- pageContent -->
     <section class="full-width pageContent">
         <!-- navBar -->
@@ -181,7 +140,7 @@ while($mostrarUser=mysqli_fetch_assoc($resultSession)) {
                         <li class="text-condensedLight noLink"><small><?php echo $mostrarUser['nombres'];?> <?php echo $mostrarUser['apellidos'];?></small></li>
                         <li class="noLink">
                             <figure>
-                                <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
+                                <img src="../assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
                             </figure>
                         </li>
                     </ul>
@@ -299,7 +258,6 @@ while($mostrarUser=mysqli_fetch_assoc($resultSession)) {
                                 </form>
                                 <div class="mdl-list">
                                   <?php
-                                  include("conexion.php");
                                     $sql="SELECT * from oficina";
                                       $result=mysqli_query($con,$sql);
                                       while($mostrar=mysqli_fetch_assoc($result)) {
@@ -309,7 +267,7 @@ while($mostrarUser=mysqli_fetch_assoc($resultSession)) {
 											<i class="zmdi zmdi-account mdl-list__item-avatar"></i>
 											<span><?php echo $mostrar['id'];?>.- <?php echo $mostrar['nombres'];?> <?php echo $mostrar['apellidos'];?></span>
                                         <span class="mdl-list__item-sub-title">DIRECCION OFICINA: <?php echo $mostrar['direccionOficina'];?></span></span>
-                                        <a class="mdl-list__item-secondary-action" href="editarOficina.php?id=<?php echo $mostrar['id']; ?>&idSession=<?php echo $idSession ?>"><i class="zmdi zmdi-more"></i></a>
+                                        <a class="mdl-list__item-secondary-action" href="editarOficina.php?id=<?php echo $mostrar['id']; ?>"><i class="zmdi zmdi-more"></i></a>
                                     </div>
                                   <?php } ?>
                                 </div>

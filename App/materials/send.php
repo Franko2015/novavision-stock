@@ -1,7 +1,11 @@
 <?php
-include("conexion.php");
 
-$idSession=$_GET['idSession'];
+include("../conection/conn.php");
+
+session_start();
+
+$idSession = $_SESSION["Logueado"];
+
 $idMaterial=$_GET['idMaterial'];
 $idOficina=$_GET['idOficina'];
 $UNIDADES=$_GET['unidades'];
