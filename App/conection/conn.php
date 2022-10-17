@@ -1,3 +1,3 @@
 <?php
 
-$con=mysqli_connect('192.168.1.9:3306','root','','stock');
+$con=mysqli_connect('localhost:3306','root','','stock');
