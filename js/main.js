@@ -31,6 +31,8 @@ $(document).ready(function(){
     	swal({
 		  	title: '¿Quieres salir del sistema?',
 		 	text: "La sesión será cerrada al salir del sistema",
+
+		 	text: "¿Estás seguro de cerrar tu sesión?",
 		  	type: 'warning',
 		  	showCancelButton: true,
 		  	confirmButtonText: 'Si, salir',
