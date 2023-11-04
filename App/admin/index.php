@@ -146,6 +146,7 @@ while ($mostrarUser = mysqli_fetch_assoc($resultSession)) {
                     </nav>
                 </div>
             </div>
+
             <section class="full-width header-well">
                 <div class="full-width header-well-icon">
                     <i class="zmdi zmdi-account"></i>
@@ -156,6 +157,7 @@ while ($mostrarUser = mysqli_fetch_assoc($resultSession)) {
                     </p>
                 </div>
             </section>
+            
             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                 <div class="mdl-tabs__tab-bar">
                     <a href="#tabNewAdmin" class="mdl-tabs__tab is-active">Nuevo</a>
